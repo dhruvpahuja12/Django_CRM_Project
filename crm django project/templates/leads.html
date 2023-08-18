@@ -1,0 +1,65 @@
+
+
+
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">"Every potential opportunity."</h1>
+      <div class="lg:w-1/2 w-full leading-relaxed text-gray-500">
+
+      </div>
+    </div>
+    <div class="flex flex-wrap -m-4">
+      <div class="flex flex-col overflow-x-auto mx-auto"> <!-- Removed unnecessary classes -->
+        <div class="sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-center text-sm font-dark">
+            <table class="min-w-full text-center text-sm font-dark">
+              <thead class="border-b font-medium dark:border-neutral-500">
+                <tr>
+                  <th scope="col" class="px-6 py-4">index</th>
+                  <th scope="col" class="px-6 py-4">Name</th>
+                  <th scope="col" class="px-6 py-4">Contacted</th>
+                  <th scope="col" class="px-6 py-4">Source</th>
+                  <th scope="col" class="px-6 py-4">agent</th>
+                  <th scope="col" class="px-6 py-4">date</th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                {% for lead in object_list %}
+                <tr class="border-b dark:border-neutral-500">
+                  <td class="whitespace-nowrap px-6 py-4 font-medium">{{ lead.id }} </td>
+                  <td class="whitespace-nowrap px-6 py-4">
+                    <a href="{% url 'leads:lead_detail' lead.id %}" class="text-blue-500 hover:underline">
+                      {{lead.first_name}}
+                    </a>
+                  </td>
+                  <td class="whitespace-nowrap px-6 py-4">{{lead.phoned}}</td>
+                  <td class="whitespace-nowrap px-6 py-4">{{lead.source}}</td>
+                  <td class="whitespace-nowrap px-6 py-4">{{lead.agent}}</td>
+                  <td class="whitespace-nowrap px-6 py-4">{{lead.date_time|date:"d-M-Y"}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    </div>
+    <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+  </div>
+</section>
+
+{% endblock content %}
+
